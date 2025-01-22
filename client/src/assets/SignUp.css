@@ -1,0 +1,8 @@
+#fullname {
+  display: flex;
+  gap: 5px;
+}
+
+#fullname > input {
+  max-width: 180px; 
+}
