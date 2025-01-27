@@ -1,3 +1,4 @@
-- complete loginFormdata change and submit handlers
-- complete backend apis for signup and login
-- complete myTodo
+- Signup done --Fix Logon link purple color to white for visited link
+-complete login apis
+-complete myTODO
+
