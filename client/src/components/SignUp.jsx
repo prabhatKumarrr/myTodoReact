@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios, {isCancel, AxiosError} from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "../assets/SignUp.css";
 import { signUpData } from "./../utils/dataVerify";

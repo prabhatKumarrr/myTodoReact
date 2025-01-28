@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../assets/MyTodo.css";
 
 export default function MyTodo() {
-  
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    token ? null:navigate("/");
+    async function fetchData() { 
+      const response = await axios.post("");
+    }
+  },[])
 
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   function handleMouseOver() {
     setIsActive(true);
@@ -20,7 +34,7 @@ export default function MyTodo() {
         <img src="/profile.jpg" alt={"Profile pic here"} title={"Profile Pic"} height="45px" width="45px"/>
         <div id={ isActive?"usernameHover":"username"}>
           <span>pappuHalwai69</span>
-          <button>Log out</button>
+          <button onClick={handleLogOut}>Log out</button>
         </div>
       </div>
       <div id={"myTodo-section"}>
