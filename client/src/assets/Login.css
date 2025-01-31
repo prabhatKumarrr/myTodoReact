@@ -72,7 +72,7 @@ input {
   cursor: pointer;
 }
 
-.link:visited {
+.link:visited, .link:active {
   color: white;
 }
 

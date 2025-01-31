@@ -27,8 +27,6 @@ export default function Login() {
   };
 
   const handleSubmit = async () => {
-    console.log(JSON.stringify(loginData));
-    
     const response = await axios.post("http://localhost:5000/myTodo/user/login", loginData);
 
     if(response.data.status) {

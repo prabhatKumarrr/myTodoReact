@@ -4,6 +4,7 @@ const JWT_KEY = process.env.JWT_KEY;
 const userRouter = Router();
 const bcrypt = require("bcrypt");
 const passHash = require("./../middlewares/passwordHashing");
+const { auth } = require("./../middlewares/authentication");
 const { userModel } = require("./../db");
 
 userRouter.post("/signUp", passHash, async (req, res) => {
@@ -67,5 +68,30 @@ userRouter.post("/login", async (req, res) => {
     })
   }
 });
+
+userRouter.post("/entry", auth, async (req, res) => {
+  const userId = req.body.userId;
+
+  const userData = await userModel.findOne({ _id: userId });
+  console.log(JSON.stringify(userData.myTodo));
+ 
+  res.json({
+    user: userData.username,
+    myTodo: userData.myTodo
+  })
+});
+
+userRouter.put("/updateTodos", auth, async (req, res) => {
+  const userId = req.body.userId;
+  const myTodos = req.body.myTodos;
+
+  await userModel.updateOne({ _id: userId }, {
+    myTodo: myTodos
+  })
+
+  res.json({
+    msg: "updated Successfully!"
+  })
+})
 
 module.exports = userRouter;
